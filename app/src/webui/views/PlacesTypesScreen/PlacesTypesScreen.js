@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, useWindowDimensions, SafeAreaView } from 'react-native';
+import { View, useWindowDimensions, SafeAreaView, StatusBar, Platform } from 'react-native';
 
 import BigButton from '../../components/BigButton/BigButton';
 import Title from '../../components/Title/Title';
@@ -8,6 +8,7 @@ import PlaceTypeContainer from '../../containers/componentsContainers/PlaceTypeC
 import { mapSelectedPlaceTypesToKeys, mapTypesOfPlacesToIconNames, typesOfPlaces } from '../../modules/util/meta.js';
 import { colors } from '../../modules/styles/colors.styles';
 import { styles } from './PlacesTypesScreen.styles';
+import { safeAreaViewCheck } from '../../modules/styles/platform.styles';
 
 const PlacesTypesScreen = ({
     selectedPlaceTypes,
@@ -22,7 +23,9 @@ const PlacesTypesScreen = ({
 
     return (
         <SafeAreaView contentContainerStyle={{ flex: 1 }}>
-            <View style={[styles.placeTypesScreenContainer, { height: useWindowDimensions().height }]}>
+            <View style={[styles.placeTypesScreenContainer,
+                { height: useWindowDimensions().height }, safeAreaViewCheck]}
+            >
                 <View style={styles.titleContainer}>
                     <Title>What kind of places are you interested in exploring?</Title>
                     <CustomText>Pick your most interesting places</CustomText>

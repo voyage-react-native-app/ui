@@ -4,7 +4,11 @@ import { connect } from 'react-redux';
 import Place from '../../components/Place/Place';
 
 const mapStateToProps = (state, ownProps) => ({
-    selectedPlaceTypes: state.user.selectedPlaceTypes
+    places: state.user.places,
+    imageUri: ownProps.imageUri,
+    placeName: ownProps.placeName,
+    rate: ownProps.rate,
+    placeTypes: ownProps.placeTypes
 });
 
 const mapDispatchToProps = dispatch => ({

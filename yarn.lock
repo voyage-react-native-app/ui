@@ -3647,6 +3647,11 @@
   dependencies:
     "source-map" "^0.7.3"
 
+"hex-to-rgba@^2.0.1":
+  "integrity" "sha512-5XqPJBpsEUMsseJUi2w2Hl7cHFFi3+OO10M2pzAvKB1zL6fc+koGMhmBqoDOCB4GemiRM/zvDMRIhVw6EkB8dQ=="
+  "resolved" "https://registry.npmjs.org/hex-to-rgba/-/hex-to-rgba-2.0.1.tgz"
+  "version" "2.0.1"
+
 "history@^4.9.0":
   "integrity" "sha512-36nwAD620w12kuzPAsyINPWJqlNbij+hpK1k9XRloDtym8mxzGYl2c17LnV6IAGB2Dmg4tEa7G7DlawS0+qjew=="
   "resolved" "https://registry.npmjs.org/history/-/history-4.10.1.tgz"
@@ -6080,6 +6085,13 @@
   "version" "2.5.3"
   dependencies:
     "dotenv" "^8.0.0"
+
+"react-native-easy-content-loader@^0.3.2":
+  "integrity" "sha512-gLlfEVjOgflWKWoB255GFMgvIkSv5ScVbCvkCGj6KDelFenqMuePnW3yqDvkSGl1xAds76NpqO+JgOuYq7gXMw=="
+  "resolved" "https://registry.npmjs.org/react-native-easy-content-loader/-/react-native-easy-content-loader-0.3.2.tgz"
+  "version" "0.3.2"
+  dependencies:
+    "hex-to-rgba" "^2.0.1"
 
 "react-native-geocoding@^0.5.0":
   "integrity" "sha512-peTXRpRxPLiZpbTW43AOvoXXAEoS+eLnSo4KRY0hcL9F2hulWE5r7o5KiaLx8AWj35c6EJP3fdGHe754q2Gd2Q=="

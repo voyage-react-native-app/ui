@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar, View, useWindowDimensions } from 'react-native';
+import { StatusBar, View, useWindowDimensions, SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useStore } from 'react-redux';
 
@@ -14,6 +14,7 @@ import Legal from '../../components/Legal/Legal';
 import { inputUserEmail, inputUserName, inputUserPassword, registerUser } from '../../redux/actions/actions';
 import { colors } from '../../modules/styles/colors.styles';
 import { styles } from './SignUpScreen.styles';
+import { safeAreaViewCheck } from '../../modules/styles/platform.styles';
 
 const SignUpScreen = ({
 
@@ -54,13 +55,14 @@ const SignUpScreen = ({
     }
 
     return (
-        <>
+        <SafeAreaView style={{ flex: 1 }}>
             <StatusBar
                 barStyle={'dark-content'}
                 backgroundColor={'transparent'}
             />
             <KeyboardAwareScrollView
-                contentContainerStyle={[styles.signUpScreenContainer, { height: useWindowDimensions().height }]}
+                contentContainerStyle={[styles.signUpScreenContainer,
+                    { height: useWindowDimensions().height }, safeAreaViewCheck]}
                 keyboardShouldPersistTaps="always"
                 showsVerticalScrollIndicator={false}
             >
@@ -125,7 +127,7 @@ const SignUpScreen = ({
                     </View>
                 </View>
             </KeyboardAwareScrollView>
-        </>
+        </SafeAreaView>
     );
 };
 

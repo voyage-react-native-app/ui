@@ -11,7 +11,7 @@ const BackArrow = ({
     onPress,
     rippleColor,
     left = 0,
-    top = 70
+    top = 50
 }) => {
     return (
         <View style={[styles.backArrowContainer, {backgroundColor: backgroundColor, left: left, top: top}]}>

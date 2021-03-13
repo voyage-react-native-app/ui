@@ -14,7 +14,7 @@ const Header = ({
     return (
         <View style={styles.header}>
             <Logo
-                height={30}
+                height={20}
                 fadeDuration={500}
             />
             <View style={styles.locationWrapper}>

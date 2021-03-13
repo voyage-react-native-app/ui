@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
         // flexGrow: 1 is substitute for flex: 1 not working !!!!
         flexGrow: 1,
         justifyContent: 'space-between',
-        paddingTop: 160,
+        paddingTop: 140,
         marginHorizontal: 30
     },
     titleContainer: {
@@ -15,15 +15,15 @@ export const styles = StyleSheet.create({
         width: '100%'
     },
     submitButtonWrapper: {
-        width: '100%'
+        width: '100%',
+        marginBottom: 40
     },
     existingAccount: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
-        marginTop: 20,
-        marginBottom: 30
+        marginTop: 25
     },
     signInMargin: {
         marginLeft: 5

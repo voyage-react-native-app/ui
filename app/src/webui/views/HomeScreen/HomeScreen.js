@@ -3,14 +3,13 @@ import {View, ScrollView, SafeAreaView, StatusBar} from 'react-native';
 
 import HeaderContainer from '../../containers/componentsContainers/HeaderContainer';
 import SelectedPlaceTypesSliderContainer from '../../containers/componentsContainers/SelectedPlaceTypesSliderContainer';
-import Place from '../../components/Place/Place';
+import PlaceContainer from '../../containers/componentsContainers/PlaceContainer';
 import { getLocationPermission } from '../../modules/util/permissions';
 import { getLocationCoords } from '../../modules/util/location';
 import { styles } from './HomeScreen.styles';
 import { typesOfPlaces } from '../../modules/util/meta';
 
 const HomeScreen = ({
-    location,
     getLocation,
     fetchPlaces,
     places
@@ -59,14 +58,16 @@ const HomeScreen = ({
                 contentContainerStyle={styles.placesContainer}
                 showsVerticalScrollIndicator={false}
             >
-                {places.length > 0 && places.map((place, index) => (
-                    <Place
-                        placeName={place.name}
-                        rate={place.rate}
-                        placeTypes={getPlaceTypes(place.kinds)}
-                        key={place+index}
-                    />
-                ))}
+                {places && places.length > 0 &&
+                    places.map((place, index) => (
+                        <PlaceContainer
+                            placeName={place.name}
+                            rate={place.rate}
+                            placeTypes={place.kinds && getPlaceTypes(place.kinds)}
+                            key={place+index}
+                        />
+                    ))
+                }
             </ScrollView>
         </SafeAreaView>
     )

@@ -2,16 +2,11 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
     placeTypesScreenContainer: {
-        // flexGrow: 1 is substitute for flex: 1 not working !!!!
-        flexGrow: 1,
-        justifyContent: 'space-between',
         paddingTop: 50,
-        paddingBottom: 30,
         marginHorizontal: 30
     },
     titleContainer: {
-        width: '100%',
-        marginTop: 30
+        width: '100%'
     },
     placeTypesContainer: {
         width: '100%',
@@ -19,10 +14,13 @@ export const styles = StyleSheet.create({
         flexWrap: 'wrap',
         justifyContent: 'space-between',
         alignContent: 'space-between',
-        height: 320
+        height: 320,
+        marginTop: 70
     },
     submitButtonWrapper: {
-        marginTop: 50,
-        width: '100%'
+        position: 'absolute',
+        bottom: 40,
+        width: '100%',
+
     }
 });

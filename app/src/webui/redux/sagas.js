@@ -68,13 +68,10 @@ function* watchGetLocation() {
 }
 
 function* getLocation(action) {
-    yield put(displayLoader());
-
     const response = yield getData(`${API_POSITIONSTACK}/reverse?access_key=${POSITION_STACK_API_KEY}&query=${action.coords.latitude},${action.coords.longitude}&output=json&limit=1`);
 
     if(response) {
         yield put(locationFetched(response.data));
-        yield put(removeLoader());
     }
 }
 
