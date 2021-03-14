@@ -3,24 +3,17 @@ import { StyleSheet } from 'react-native';
 import { colors } from '../../modules/styles/colors.styles';
 
 export const styles = StyleSheet.create({
-    contentLoaderWrapper: {
-        width: '100%',
-        marginBottom: 25,
-        paddingHorizontal: 0
-    },
     placeContainer: {
         width: '100%',
-        height: 280,
         marginBottom: 25
     },
-    placeImageSize: {
-        width: '100%',
-        height: 190
+    placeImageWrapper: {
+        width: '100%'
     },
     placeImage: {
+        width: '100%',
+        height: 190,
         borderRadius: 12,
-        resizeMode: "cover",
-        justifyContent: "center"
     },
     infoContainer: {
         marginTop: 10,

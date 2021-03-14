@@ -13,5 +13,10 @@ export const styles = StyleSheet.create({
     placesContainer: {
         backgroundColor: colors.gray100,
         padding: 30
+    },
+    contentLoaderWrapper: {
+        width: '100%',
+        marginBottom: 25,
+        paddingHorizontal: 0
     }
 });

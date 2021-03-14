@@ -1,13 +1,10 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-import BackArrow from '../../BackArrow/BackArrow';
 import { styles } from './OnboardingSlideHeader.styles';
-import { colors } from '../../../modules/styles/colors.styles';
 
 const OnboardingSlideHeader = ({
     label,
-    textRight,
     backgroundColor,
     width,
     height

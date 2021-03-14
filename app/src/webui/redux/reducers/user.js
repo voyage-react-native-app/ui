@@ -13,7 +13,7 @@ const INITIAL_STATE = {
     email: '',
     password: '',
     selectedPlaceTypes: [],
-    places: [...Array(10).fill('')]
+    places: []
 }
 
 export default (state = INITIAL_STATE, action) => {

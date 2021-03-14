@@ -83,7 +83,7 @@ function* fetchPlaces(action) {
     const { coords, selectedPlaceTypes } = action;
     const requestPlaceTypes = mapSelectedPlaceTypesToKeys(selectedPlaceTypes).toString();
 
-    const response = yield getData(`${API_OPENTRIPMAP}/en/places/bbox?lon_min=${coords.longitude-0.5}&lon_max=${coords.longitude+0.5}&lat_min=${coords.latitude-0.5}&lat_max=${coords.latitude+0.5}&kinds=${requestPlaceTypes}&limit=20&format=json&apikey=${OPENTRIPMAP_API_KEY}`);
+    const response = yield getData(`${API_OPENTRIPMAP}/en/places/bbox?lon_min=${coords.longitude-0.5}&lon_max=${coords.longitude+0.5}&lat_min=${coords.latitude-0.5}&lat_max=${coords.latitude+0.5}&kinds=${requestPlaceTypes}&limit=10&format=json&apikey=${OPENTRIPMAP_API_KEY}`);
 
     if(response) {
         yield put(placesFetched(response));

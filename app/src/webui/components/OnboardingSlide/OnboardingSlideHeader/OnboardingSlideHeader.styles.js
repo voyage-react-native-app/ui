@@ -5,7 +5,16 @@ export const styles = StyleSheet.create({
     onboardingSlideHeaderContainer: {
         justifyContent: 'center',
         borderBottomLeftRadius: 75,
-        borderBottomRightRadius: 75
+        borderBottomRightRadius: 75,
+        shadowColor: colors.gray900,
+        shadowOffset: {
+            width: 0,
+            height: 4,
+        },
+        shadowOpacity: 0.30,
+        shadowRadius: 4.65,
+
+        elevation: 3,
     },
     triangleOverlay: {
         width: 0,
