@@ -4,20 +4,22 @@ import { colors } from '../../../modules/styles/colors.styles';
 
 export const styles = StyleSheet.create({
     loaderContainer: {
-        width: '100%',
-        height: '100%',
+        position: 'absolute',
         zIndex: 10,
-        backgroundColor: colors.white,
+        backgroundColor: 'rgba(0, 0, 0, 0.4)',
         justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'row'
+        alignItems: 'center'
     },
-    pillarsWrapper: {
-        flexDirection: 'row'
+    loaderWrapper: {
+        width: '80%',
+        flexDirection: 'row',
+        backgroundColor: colors.white,
+        padding: 20,
+        justifyContent: 'flex-start',
+        alignItems: 'center'
     },
-    registerButtons: {
-        backgroundColor: 'black',
-        width: 200,
-        height: 50,
+    loadingText: {
+        color: colors.gray600,
+        marginLeft: 15
     }
 });

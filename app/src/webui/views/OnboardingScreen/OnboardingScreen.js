@@ -7,6 +7,7 @@ import OnboardingSlideFooter from '../../components/OnboardingSlide/OnboardingSl
 import Paginator from '../../components/Paginator/Paginator';
 import { styles } from './OnboardingScreen.styles';
 import { colors } from '../../modules/styles/colors.styles';
+import LoaderContainer from '../../containers/componentsContainers/LoaderContainer';
 
 const onboardingData = [
     {
@@ -75,7 +76,7 @@ const OnboardingScreen = ({
     };
 
     return (
-        <>
+        <><LoaderContainer/>
             <StatusBar
                 barStyle={'light-content'}
                 translucent

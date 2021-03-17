@@ -14,6 +14,7 @@ import store from './app/src/webui/redux/store';
 import { navigationRef } from './app/src/webui/views/RootNavigation';
 import { colors } from './app/src/webui/modules/styles/colors.styles';
 import OnboardingScreen from './app/src/webui/views/OnboardingScreen/OnboardingScreen';
+import ApplicationLoader from './app/src/webui/components/Loader/ApplicationLoader/ApplicationLoader';
 
 const Stack = createStackNavigator();
 
@@ -31,10 +32,14 @@ const App: () => React$Node = () => {
             >
                 <Stack.Navigator screenOptions={{headerShown: false}}>
                     <Stack.Screen
+                        name="Application Loader"
+                        component={ApplicationLoader}
+                    />
+                    <Stack.Screen
                         name="Onboarding"
                         component={OnboardingScreen}
                         options={{
-                            ...TransitionPresets.RevealFromBottomAndroid
+                            ...TransitionPresets.SlideFromRightIOS
                         }}
                     />
                     <Stack.Screen
@@ -55,7 +60,7 @@ const App: () => React$Node = () => {
                         name="Home"
                         component={HomeScreenContainer}
                         options={{
-                            ...TransitionPresets.RevealFromBottomAndroid
+                            ...TransitionPresets.ModalSlideFromBottomIOSs
                         }}
                     />
                 </Stack.Navigator>

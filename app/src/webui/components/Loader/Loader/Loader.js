@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { View, Animated, Easing } from 'react-native';
+import { View, Animated, Easing, ActivityIndicator, Text, useWindowDimensions, StatusBar } from 'react-native';
 
-import LoaderPillar from '../LoaderPillar/LoaderPillar';
-import { pillarColors } from '../../../modules/styles/loader.styles';
+import { safeAreaViewCheck } from '../../../modules/styles/platform.styles';
 import { styles } from './Loader.styles';
+import { colors } from '../../../modules/styles/colors.styles';
 
-const numberOfPillars = pillarColors.length;
 
 const Loader = ({
     loaderDisplayed
 }) => {
+    const { width, height } = useWindowDimensions();
+
     const [ fadeAnimation ] = useState(new Animated.Value(0));
 
     Animated.timing(
@@ -32,34 +33,37 @@ const Loader = ({
     }
 
     useEffect(() => {
-        return () => {
-            Animated.timing(
-                fadeAnimation,
-                {
-                    toValue: 0,
-                    duration: 400,
-                    useNativeDriver: true,
-                    easing: Easing.linear
-                }
-            ).start();
-        }
-    }, []);
+        Animated.timing(
+            fadeAnimation,
+            {
+                toValue: 0,
+                duration: 400,
+                useNativeDriver: true,
+                easing: Easing.linear
+            }
+        ).start();
+    }, [loaderDisplayed]);
 
     return (
         <>
             {loaderDisplayed &&
-                <Animated.View style={[styles.loaderContainer, fadeStyle]}>
-                    <View style={styles.pillarsWrapper}>
-                        {[...Array(numberOfPillars)].map((value, index) => (
-                            <LoaderPillar
-                                delay={index*50}
-                                key={index}
-                                pillarColor={pillarColors[index]}
-                                index={index+1}
+                <>
+                    <StatusBar
+                        barStyle={'default'}
+                        translucent={true}
+                        backgroundColor={'black'}
+                    />
+                    <Animated.View style={[styles.loaderContainer, { width: width, height: height }, safeAreaViewCheck]}>
+                        <View style={styles.loaderWrapper}>
+                            <ActivityIndicator
+                                color={colors.blue}
+                                size={'large'}
+                                animating
                             />
-                        ))}
-                    </View>
-                </Animated.View>
+                            <Text style={styles.loadingText}>Please wait...</Text>
+                        </View>
+                    </Animated.View>
+                </>
             }
         </>
     );
