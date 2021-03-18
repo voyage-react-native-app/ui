@@ -14,7 +14,6 @@ const ApplicationLoader = ({
     const { width, height } = useWindowDimensions();
 
     const navigate = () => {
-        console.log('jes')
         navigation.navigate('Onboarding');
     };
 

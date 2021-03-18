@@ -42,7 +42,7 @@ const PlacesTypesScreen = ({
                 </View>
                 <View style={styles.submitButtonWrapper}>
                     <BigButton
-                        backgroundColor={colors.blue600}
+                        backgroundColor={colors.blue}
                         fontColor={colors.white}
                         buttonText={'Continue'}
                         disabled={isSelectedPlacesTypesEmpty}

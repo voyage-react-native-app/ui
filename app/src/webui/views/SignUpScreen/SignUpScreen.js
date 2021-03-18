@@ -68,7 +68,7 @@ const SignUpScreen = ({
             >
                 <BackArrow
                     backgroundColor={colors.blue100}
-                    arrowColor={colors.blue600}
+                    arrowColor={colors.blue}
                     onPress={goBack}
                     rippleColor={colors.blue300}
                 />
@@ -104,7 +104,7 @@ const SignUpScreen = ({
                 <View style={styles.submitButtonWrapper}>
                     <Legal/>
                     <BigButton
-                        backgroundColor={colors.blue600}
+                        backgroundColor={colors.blue}
                         fontColor={colors.white}
                         buttonText={'Sign Up'}
                         onPress={dispatchRegisterUser}
@@ -117,7 +117,7 @@ const SignUpScreen = ({
                         </CustomText>
                         <View style={styles.signInMargin}>
                             <CustomText
-                                textColor={colors.blue600}
+                                textColor={colors.blue}
                                 fontWeight={'bold'}
                                 onPress={() => console.log('screen')}
                             >

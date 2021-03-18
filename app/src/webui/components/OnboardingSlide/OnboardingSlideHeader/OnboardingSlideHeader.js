@@ -7,7 +7,8 @@ const OnboardingSlideHeader = ({
     label,
     backgroundColor,
     width,
-    height
+    height,
+    Picture
 }) => {
     const transform = [
         { translateX: width / 2 - 50 },
@@ -16,6 +17,9 @@ const OnboardingSlideHeader = ({
 
     return (
         <View style={[styles.onboardingSlideHeaderContainer, { backgroundColor: backgroundColor, width: width, height: height }]}>
+            <View style={styles.imageWrapper}>
+                <Picture width={width / 1.75}/>
+            </View>
             <View style={[styles.titleWrapper, { transform: transform }]}>
                 <Text style={styles.title}>{label}</Text>
             </View>

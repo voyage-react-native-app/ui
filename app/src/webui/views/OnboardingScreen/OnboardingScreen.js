@@ -5,9 +5,11 @@ import { useNavigation } from '@react-navigation/native';
 import OnboardingSlideHeader from '../../components/OnboardingSlide/OnboardingSlideHeader/OnboardingSlideHeader';
 import OnboardingSlideFooter from '../../components/OnboardingSlide/OnboardingSlideFooter/OnboardingSlideFooter';
 import Paginator from '../../components/Paginator/Paginator';
+import ChooseSvg from '../../assets/images/svg/choose_onboarding.svg';
+import DiscoverSvg from '../../assets/images/svg/discover_onboarding.svg';
+import EnjoySvg from '../../assets/images/svg/enjoy_onboarding.svg';
 import { styles } from './OnboardingScreen.styles';
 import { colors } from '../../modules/styles/colors.styles';
-import LoaderContainer from '../../containers/componentsContainers/LoaderContainer';
 
 const onboardingData = [
     {
@@ -16,7 +18,8 @@ const onboardingData = [
             subtitle: 'Pack Your Bag',
             description: 'A great variety of local places is waiting for you.'
         },
-        backgroundColor: colors.blue600
+        backgroundColor: colors.blue,
+        picture: ChooseSvg
     },
     {
         text: {
@@ -24,7 +27,8 @@ const onboardingData = [
             subtitle: 'Explore the world around you',
             description: 'Discover each and every one of them.'
         },
-        backgroundColor: colors.blue600,
+        backgroundColor: colors.blue,
+        picture: DiscoverSvg,
         right: true
     },
     {
@@ -33,7 +37,8 @@ const onboardingData = [
             subtitle: 'Enjoy your trip',
             description: 'Don\'t forget to take photos and share them with the world.'
         },
-        backgroundColor: colors.blue600
+        backgroundColor: colors.blue,
+        picture: EnjoySvg
     }
 ];
 
@@ -60,6 +65,7 @@ const OnboardingScreen = ({
         <OnboardingSlideHeader
             label={item.text.label}
             backgroundColor={item.backgroundColor}
+            Picture={item.picture}
             textRight={item.right}
             width={width}
             height={height * 0.6}
@@ -76,7 +82,7 @@ const OnboardingScreen = ({
     };
 
     return (
-        <><LoaderContainer/>
+        <>
             <StatusBar
                 barStyle={'light-content'}
                 translucent

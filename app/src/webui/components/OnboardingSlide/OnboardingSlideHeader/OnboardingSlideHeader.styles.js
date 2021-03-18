@@ -13,19 +13,13 @@ export const styles = StyleSheet.create({
         },
         shadowOpacity: 0.30,
         shadowRadius: 4.65,
-
         elevation: 3,
+        overflow: 'hidden',
+        position: 'relative'
     },
-    triangleOverlay: {
-        width: 0,
-        height: 0,
-        backgroundColor: "transparent",
-        borderStyle: "solid",
-        borderRightColor: "transparent",
-        borderTopColor: colors.white,
+    imageWrapper: {
         position: 'absolute',
-        bottom: 0,
-        transform: [{ rotate: '270deg' }]
+        left: 40
     },
     titleWrapper: {
         height: 100,

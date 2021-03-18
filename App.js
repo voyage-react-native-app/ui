@@ -1,11 +1,10 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import { StyleSheet, StatusBar, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Provider } from 'react-redux';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createStackNavigator, TransitionPresets  } from '@react-navigation/stack';
 
-import LaunchScreen from './app/src/webui/views/LaunchScreen/LaunchScreen';
 import LoaderContainer from './app/src/webui/containers/componentsContainers/LoaderContainer';
 import SignUpScreen from './app/src/webui/views/SignUpScreen/SignUpScreen';
 import PlacesTypesScreenContainer from './app/src/webui/containers/screensContainers/PlacesTypesScreenContainer';

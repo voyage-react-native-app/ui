@@ -28,7 +28,7 @@ const PlaceType = ({
 
     return (
         <View style={styles.placeWrapper}>
-            <View style={[styles.place, selected && {backgroundColor: colors.blue600}]}>
+            <View style={[styles.place, selected && {backgroundColor: colors.blue}]}>
                 <TouchableNativeFeedback
                     background={TouchableNativeFeedback.Ripple(colors.blue100, true)}
                     onPress={toggleSelectPlaceType}
