@@ -1,9 +1,11 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Provider } from 'react-redux';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createStackNavigator, TransitionPresets  } from '@react-navigation/stack';
+
+import SplashScreen from 'react-native-splash-screen';
 
 import LoaderContainer from './app/src/webui/containers/componentsContainers/LoaderContainer';
 import SignUpScreen from './app/src/webui/views/SignUpScreen/SignUpScreen';
@@ -13,7 +15,6 @@ import store from './app/src/webui/redux/store';
 import { navigationRef } from './app/src/webui/views/RootNavigation';
 import { colors } from './app/src/webui/modules/styles/colors.styles';
 import OnboardingScreen from './app/src/webui/views/OnboardingScreen/OnboardingScreen';
-import ApplicationLoader from './app/src/webui/components/Loader/ApplicationLoader/ApplicationLoader';
 
 const Stack = createStackNavigator();
 
@@ -22,52 +23,54 @@ const navTheme = DefaultTheme;
 navTheme.colors.background = '#FFFFFF';
 
 const App: () => React$Node = () => {
-  return (
-    <View style={styles.root}>
-        <Provider store={store}>
-            <NavigationContainer
-                theme={navTheme}
-                ref={navigationRef}
-            >
-                <Stack.Navigator screenOptions={{headerShown: false}}>
-                    <Stack.Screen
-                        name="Application Loader"
-                        component={ApplicationLoader}
-                    />
-                    <Stack.Screen
-                        name="Onboarding"
-                        component={OnboardingScreen}
-                        options={{
-                            ...TransitionPresets.SlideFromRightIOS
-                        }}
-                    />
-                    <Stack.Screen
-                        name="Signup"
-                        component={SignUpScreen}
-                        options={{
-                            ...TransitionPresets.SlideFromRightIOS
-                        }}
-                    />
-                    <Stack.Screen
-                        name="Places Types"
-                        component={PlacesTypesScreenContainer}
-                        options={{
-                            ...TransitionPresets.SlideFromRightIOS
-                        }}
-                    />
-                    <Stack.Screen
-                        name="Home"
-                        component={HomeScreenContainer}
-                        options={{
-                            ...TransitionPresets.ModalSlideFromBottomIOSs
-                        }}
-                    />
-                </Stack.Navigator>
-            </NavigationContainer>
-            <LoaderContainer/>
-        </Provider>
-    </View>
-  );
+    // Check when react navigation is ready
+    const onNavigationReady = () => {
+        SplashScreen.hide();
+    };
+
+    return (
+        <View style={styles.root}>
+            <Provider store={store}>
+                <NavigationContainer
+                    onReady={onNavigationReady}
+                    theme={navTheme}
+                    ref={navigationRef}
+                >
+                    <Stack.Navigator screenOptions={{headerShown: false}}>
+                        <Stack.Screen
+                            name="Onboarding"
+                            component={OnboardingScreen}
+                            options={{
+                                ...TransitionPresets.SlideFromRightIOS
+                            }}
+                        />
+                        <Stack.Screen
+                            name="Signup"
+                            component={SignUpScreen}
+                            options={{
+                                ...TransitionPresets.SlideFromRightIOS
+                            }}
+                        />
+                        <Stack.Screen
+                            name="Places Types"
+                            component={PlacesTypesScreenContainer}
+                            options={{
+                                ...TransitionPresets.SlideFromRightIOS
+                            }}
+                        />
+                        <Stack.Screen
+                            name="Home"
+                            component={HomeScreenContainer}
+                            options={{
+                                ...TransitionPresets.ModalSlideFromBottomIOSs
+                            }}
+                        />
+                    </Stack.Navigator>
+                </NavigationContainer>
+                <LoaderContainer/>
+            </Provider>
+        </View>
+    );
 };
 
 const styles = StyleSheet.create({

@@ -1,8 +1,16 @@
 package com.claus;
 
 import com.facebook.react.ReactActivity;
+import android.os.Bundle;
+import org.devio.rn.splashscreen.SplashScreen;
 
 public class MainActivity extends ReactActivity {
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    SplashScreen.show(this, R.style.SplashTheme);
+  }
 
   /**
    * Returns the name of the main component registered from JavaScript. This is used to schedule
