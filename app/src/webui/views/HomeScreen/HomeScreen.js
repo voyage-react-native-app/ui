@@ -38,7 +38,7 @@ const HomeScreen = ({
                 getLocationCoords(setCoords, getLocation, fetchPlaces);
             }
         });
-    }, [coords]);
+    });
 
     useEffect(() => {
         if(Object.keys(coords).length) {
@@ -50,7 +50,7 @@ const HomeScreen = ({
         if(places.length !== 0) {
             setLoading(false);
         }
-    }, [places]);
+    });
 
     return (
         <SafeAreaView contentContainerStyle={{flex: 1}}>
@@ -80,7 +80,7 @@ const HomeScreen = ({
                         />
                     ))
                     :
-                    places.map((place, index) => (
+                    places.length > 0 && places.map((place, index) => (
                         <PlaceContainer
                             placeName={place.name}
                             rate={place.rate}

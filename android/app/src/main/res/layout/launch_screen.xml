@@ -9,5 +9,5 @@
               android:layout_height="match_parent"
               android:gravity="center"
               style="@style/SplashScreenLogo"
-              android:text="CLAUS"/>
+              android:text="Voyage"/>
 </LinearLayout>

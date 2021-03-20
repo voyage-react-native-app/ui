@@ -6,15 +6,17 @@ import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createStackNavigator, TransitionPresets  } from '@react-navigation/stack';
 
 import SplashScreen from 'react-native-splash-screen';
+import { getData } from './app/src/webui/modules/util/user';
 
 import LoaderContainer from './app/src/webui/containers/componentsContainers/LoaderContainer';
-import SignUpScreen from './app/src/webui/views/SignUpScreen/SignUpScreen';
+import SignUpScreenContainer from './app/src/webui/containers/screensContainers/SignUpScreenContainer';
 import PlacesTypesScreenContainer from './app/src/webui/containers/screensContainers/PlacesTypesScreenContainer';
 import HomeScreenContainer from './app/src/webui/containers/screensContainers/HomeScreenContainer';
+import OnboardingScreen from './app/src/webui/views/OnboardingScreen/OnboardingScreen';
 import store from './app/src/webui/redux/store';
+import * as RootNavigation from './app/src/webui/views/RootNavigation';
 import { navigationRef } from './app/src/webui/views/RootNavigation';
 import { colors } from './app/src/webui/modules/styles/colors.styles';
-import OnboardingScreen from './app/src/webui/views/OnboardingScreen/OnboardingScreen';
 
 const Stack = createStackNavigator();
 
@@ -23,16 +25,30 @@ const navTheme = DefaultTheme;
 navTheme.colors.background = '#FFFFFF';
 
 const App: () => React$Node = () => {
-    // Check when react navigation is ready
-    const onNavigationReady = () => {
-        SplashScreen.hide();
-    };
+    const checkUser = async () => {
+        const user = await getData('@user');
+        if(user !== null) {
+            return user;
+        }
+
+        return null;
+    }
+
+    useEffect(() => {
+        checkUser().then(user => {
+            SplashScreen.hide();
+            if(user) {
+                RootNavigation.navigate('Home');
+            } else {
+                RootNavigation.navigate('Onboarding');
+            }
+        });
+    }, []);
 
     return (
         <View style={styles.root}>
             <Provider store={store}>
                 <NavigationContainer
-                    onReady={onNavigationReady}
                     theme={navTheme}
                     ref={navigationRef}
                 >
@@ -46,7 +62,7 @@ const App: () => React$Node = () => {
                         />
                         <Stack.Screen
                             name="Signup"
-                            component={SignUpScreen}
+                            component={SignUpScreenContainer}
                             options={{
                                 ...TransitionPresets.SlideFromRightIOS
                             }}
@@ -62,7 +78,7 @@ const App: () => React$Node = () => {
                             name="Home"
                             component={HomeScreenContainer}
                             options={{
-                                ...TransitionPresets.ModalSlideFromBottomIOSs
+                                ...TransitionPresets.RevealFromBottomAndroid
                             }}
                         />
                     </Stack.Navigator>

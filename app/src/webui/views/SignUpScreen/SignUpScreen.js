@@ -11,13 +11,18 @@ import BigButton from '../../components/BigButton/BigButton';
 import Title from '../../components/Title/Title';
 import CustomText from '../../components/CustomText/CustomText';
 import Legal from '../../components/Legal/Legal';
-import { inputUserEmail, inputUserName, inputUserPassword, registerUser } from '../../redux/actions/actions';
 import { colors } from '../../modules/styles/colors.styles';
 import { styles } from './SignUpScreen.styles';
 import { safeAreaViewCheck } from '../../modules/styles/platform.styles';
 
 const SignUpScreen = ({
-
+    username,
+    email,
+    password,
+    inputUserName,
+    inputUserEmail,
+    inputUserPassword,
+    registerUser
 }) => {
     const navigation = useNavigation();
 
@@ -30,28 +35,28 @@ const SignUpScreen = ({
     const dispatchInputUserName = event => {
         event.persist();
         const { text } = event.nativeEvent;
-        store.dispatch(inputUserName(text));
+        inputUserName(text);
     };
 
     const dispatchInputUserEmail = event => {
         event.persist();
         const { text } = event.nativeEvent;
-        store.dispatch(inputUserEmail(text));
+        inputUserEmail(text);
     };
 
     const dispatchInputUserPassword = event => {
         event.persist();
         const { text } = event.nativeEvent;
-        store.dispatch(inputUserPassword(text));
+        inputUserPassword(text);
     };
 
-    const dispatchRegisterUser = () => {
+    const register = () => {
         const data = {
-            username: store.getState().user.username,
-            email: store.getState().user.email,
-            password: store.getState().user.password
+            username: username,
+            email: email,
+            password: password
         };
-        store.dispatch(registerUser(data));
+        registerUser(data);
     }
 
     return (
@@ -81,14 +86,14 @@ const SignUpScreen = ({
                         onTextInput={dispatchInputUserName}
                         placeholder={'Username'}
                         autoCompleteType={'username'}
-                        defaultValue={store.getState().user.username}
+                        defaultValue={username}
                         textContentType={'username'}
                     />
                     <Input
                         onTextInput={dispatchInputUserEmail}
                         placeholder={'E-mail'}
                         autoCompleteType={'email'}
-                        defaultValue={store.getState().user.email}
+                        defaultValue={email}
                         textContentType={'emailAddress'}
                     />
                     <Input
@@ -96,7 +101,7 @@ const SignUpScreen = ({
                         placeholder={'Password'}
                         autoCompleteType={'password'}
                         autoCorrect={false}
-                        defaultValue={store.getState().user.password}
+                        defaultValue={password}
                         textContentType={'password'}
                         secureTextEntry={true}
                     />
@@ -107,7 +112,7 @@ const SignUpScreen = ({
                         backgroundColor={colors.blue}
                         fontColor={colors.white}
                         buttonText={'Sign Up'}
-                        onPress={dispatchRegisterUser}
+                        onPress={register}
                     />
                     <View style={styles.existingAccount}>
                         <CustomText
