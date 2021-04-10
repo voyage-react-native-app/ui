@@ -6,7 +6,7 @@ import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createStackNavigator, TransitionPresets  } from '@react-navigation/stack';
 
 import SplashScreen from 'react-native-splash-screen';
-import { getData } from './app/src/webui/modules/util/user';
+import { setData, getData } from './app/src/webui/modules/util/user';
 
 import LoaderContainer from './app/src/webui/containers/componentsContainers/LoaderContainer';
 import SignUpScreenContainer from './app/src/webui/containers/screensContainers/SignUpScreenContainer';

@@ -19,7 +19,7 @@ import { displayLoader, locationFetched, placesFetched, removeLoader } from './a
 import * as RootNavigation from '../views/RootNavigation';
 import { postData, getData } from '../modules/util/fetch.js';
 import { mapSelectedPlaceTypesToKeys } from '../modules/util/meta';
-import { storeData } from '../modules/util/user';
+import { setData } from '../modules/util/user';
 
 function* watchFetchUserData() {
     yield takeEvery(FETCH_USER_DATA, fetchUserData);
@@ -37,10 +37,10 @@ function* registerUser(action) {
     yield put(displayLoader());
 
     const response = yield postData(`${API_HOST}/users/registration`, action.data);
-
+console.log(response)
     if(!response.hasErrors) {
         yield put(removeLoader());
-        yield storeData('@user', action.data);
+        yield setData('@user', action.data);
         RootNavigation.navigate('Places Types');
     }
 }

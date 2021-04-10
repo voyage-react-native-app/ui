@@ -14,14 +14,14 @@ export const styles = StyleSheet.create({
         textAlign: 'center',
         paddingHorizontal: 55,
         marginBottom: 12,
-        color: colors.gray800
+        color: colors.white
     },
     slideDescription: {
         fontSize: 16,
         lineHeight: 24,
         textAlign: 'center',
         paddingHorizontal: 52,
-        color: colors.gray700
+        color: colors.white
     },
     buttonWrapper: {
         width: '100%',

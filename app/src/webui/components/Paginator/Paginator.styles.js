@@ -10,6 +10,6 @@ export const styles = StyleSheet.create({
         height: 10,
         borderRadius: 5,
         marginHorizontal: 5,
-        backgroundColor: colors.blue
+        backgroundColor: colors.white
     }
 });

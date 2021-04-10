@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Animated, useWindowDimensions } from 'react-native';
 
 import { styles } from './Paginator.styles';
-import { colors } from '../../modules/styles/colors.styles';
 
 const Paginator = ({
     onboardingData,
@@ -24,7 +23,7 @@ const Paginator = ({
 
                 const opacity = scrollX.interpolate({
                     inputRange,
-                    outputRange: [0.3, 1, 0.3],
+                    outputRange: [0.65, 1, 0.65],
                     extrapolate: 'clamp'
                 });
 

@@ -4,7 +4,9 @@ import { useNavigation } from '@react-navigation/native';
 
 import OnboardingSlideHeader from '../../components/OnboardingSlide/OnboardingSlideHeader/OnboardingSlideHeader';
 import OnboardingSlideFooter from '../../components/OnboardingSlide/OnboardingSlideFooter/OnboardingSlideFooter';
+import OnboardingBackdrop from '../../components/OnboardingBackdrop/OnboardingBackdrop';
 import Paginator from '../../components/Paginator/Paginator';
+import OnboardingSquare from '../../components/OnboardingSquare/OnboardingSquare';
 import ChooseSvg from '../../assets/images/svg/choose_onboarding.svg';
 import DiscoverSvg from '../../assets/images/svg/discover_onboarding.svg';
 import EnjoySvg from '../../assets/images/svg/enjoy_onboarding.svg';
@@ -27,7 +29,7 @@ const onboardingData = [
             subtitle: 'Explore the world around you',
             description: 'Discover each and every one of them.'
         },
-        backgroundColor: colors.blue,
+        backgroundColor: colors.green,
         picture: DiscoverSvg,
         right: true
     },
@@ -37,10 +39,16 @@ const onboardingData = [
             subtitle: 'Enjoy your trip',
             description: 'Don\'t forget to take photos and share them with the world.'
         },
-        backgroundColor: colors.blue,
+        backgroundColor: colors.yellow,
         picture: EnjoySvg
     }
 ];
+
+const onboardingBackdropColors = [
+    colors.yellow,
+    colors.blue,
+    colors.yellow
+]
 
 const OnboardingScreen = ({
 
@@ -74,19 +82,28 @@ const OnboardingScreen = ({
     );
 
     const scrollTo = () => {
-        if(slidesRef && currentSlideIndex < onboardingData.length - 1) {
-            slidesRef.current.scrollToIndex({ index: currentSlideIndex + 1, animated: true });
-        } else if(currentSlideIndex === onboardingData.length - 1) {
-            navigation.navigate('Signup');
-        }
+        navigation.navigate('Signup');
     };
+
+    const backdropBackground = scrollX.interpolate({
+       inputRange: onboardingBackdropColors.map((_, i) => i * width),
+       outputRange: onboardingBackdropColors.map(bg => bg)
+    });
 
     return (
         <>
             <StatusBar
-                barStyle={'light-content'}
+                barStyle={'dark-content'}
                 translucent
                 backgroundColor={'transparent'}
+            />
+            <OnboardingBackdrop
+                backgroundColor={backdropBackground}
+            />
+            <OnboardingSquare
+                scrollX={scrollX}
+                width={width}
+                height={height}
             />
             <Animated.FlatList
                 data={onboardingData}
@@ -94,7 +111,6 @@ const OnboardingScreen = ({
                 pagingEnabled
                 keyExtractor={(_, index) => index.toString()}
                 showsHorizontalScrollIndicator={false}
-                decelerationRate={'fast'}
                 onScroll={Animated.event([{ nativeEvent: { contentOffset: { x: scrollX } } }], {
                     useNativeDriver: false
                 })}

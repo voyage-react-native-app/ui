@@ -20,10 +20,10 @@ const OnboardingSlideFooter = ({
             <Text style={styles.slideDescription}>{description}</Text>
             <View style={styles.buttonWrapper}>
                 <BigButton
-                    backgroundColor={lastSlide ? colors.blue : colors.gray200}
-                    fontColor={lastSlide ? colors.white : colors.gray800}
-                    rippleColor={lastSlide ? null : colors.gray400}
-                    buttonText={lastSlide ? 'Get started' : 'Next'}
+                    backgroundColor={colors.gray100}
+                    fontColor={colors.gray800}
+                    rippleColor={colors.gray300}
+                    buttonText={lastSlide ? 'Get started' : 'Skip'}
                     onPress={onNextButtonPress}
                 />
             </View>
