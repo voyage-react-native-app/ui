@@ -18,15 +18,14 @@ const OnboardingSlideFooter = ({
         <View style={[styles.onboardingSlideFooterContainer, { width: width, height: height }]}>
             <Text style={styles.slideSubtitle}>{subtitle}</Text>
             <Text style={styles.slideDescription}>{description}</Text>
-            <View style={styles.buttonWrapper}>
-                <BigButton
-                    backgroundColor={colors.gray100}
-                    fontColor={colors.gray800}
-                    rippleColor={colors.gray300}
-                    buttonText={lastSlide ? 'Get started' : 'Skip'}
-                    onPress={onNextButtonPress}
-                />
-            </View>
+            <BigButton
+                backgroundColor={colors.gray100}
+                fontColor={colors.gray800}
+                rippleColor={colors.gray300}
+                buttonText={lastSlide ? 'Get started' : 'Skip'}
+                onPress={onNextButtonPress}
+                style={{marginBottom: 30}}
+            />
         </View>
     );
 };

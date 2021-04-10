@@ -4,7 +4,9 @@ import { colors } from '../../modules/styles/colors.styles';
 
 export const styles = StyleSheet.create({
     paginatorContainer: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        marginLeft: 'auto',
+        marginRight: 'auto'
     },
     paginatorDot: {
         height: 10,

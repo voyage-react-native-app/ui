@@ -10,12 +10,13 @@ const BigButton = ({
     fontColor,
     buttonText,
     rippleColor = colors.blue400,
-    icon,
+    Icon,
     onPress,
-    disabled
+    disabled,
+    style
 }) => {
     return (
-        <View style={[styles.bigButtonContainer, {backgroundColor: disabled ? colors.gray300 : backgroundColor}]}>
+        <View style={[styles.bigButtonContainer, {backgroundColor: disabled ? colors.gray300 : backgroundColor}, style]}>
             <TouchableNativeFeedback
                 background={TouchableNativeFeedback.Ripple(rippleColor, true)}
                 onPress={onPress}
@@ -23,8 +24,8 @@ const BigButton = ({
             >
                 <View style={styles.buttonTextWrapper}>
                     <Text style={[styles.buttonText, {color: fontColor}]}>
-                        {icon &&
-                            <Icon></Icon>
+                        {Icon &&
+                            <Icon/>
                         }
                         {buttonText}
                     </Text>

@@ -21,11 +21,7 @@ export const styles = StyleSheet.create({
         lineHeight: 24,
         textAlign: 'center',
         paddingHorizontal: 52,
-        color: colors.white
-    },
-    buttonWrapper: {
-        width: '100%',
-        bottom: 30,
-        position: 'absolute'
+        color: colors.white,
+        marginBottom: 'auto'
     }
 });

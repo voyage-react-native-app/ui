@@ -7,14 +7,13 @@ import { styles } from './Title.styles';
 const Title = ({
     children,
     titleFontSize = 30,
-    titleColor = colors.gray700
+    titleColor = colors.gray700,
+    style
 }) => {
     return (
-        <View style={styles.titleWrapper}>
-            <Text style={[styles.title, {fontSize: titleFontSize, color: titleColor}]}>
-                {children}
-            </Text>
-        </View>
+        <Text style={[styles.title, {fontSize: titleFontSize, color: titleColor}, style]}>
+            {children}
+        </Text>
     );
 }
 

@@ -9,17 +9,16 @@ const CustomText = ({
     textFontSize = 15,
     textColor = colors.gray500,
     fontWeight = 'normal',
-    onPress
+    onPress,
+    style
 }) => {
     return (
-        <View style={styles.textWrapper}>
-            <Text
-                style={[styles.text, {fontSize: textFontSize, color: textColor, fontWeight: fontWeight}]}
-                onPress={onPress}
-            >
-                {children}
-            </Text>
-        </View>
+        <Text
+            style={[styles.text, {fontSize: textFontSize, color: textColor, fontWeight: fontWeight}, style]}
+            onPress={onPress}
+        >
+            {children}
+        </Text>
     );
 }
 

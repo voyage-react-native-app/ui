@@ -20,7 +20,7 @@ const onboardingData = [
             subtitle: 'Pack Your Bag',
             description: 'A great variety of local places is waiting for you.'
         },
-        backgroundColor: colors.blue,
+        backgroundColor: colors.yellow,
         picture: ChooseSvg
     },
     {
@@ -29,7 +29,7 @@ const onboardingData = [
             subtitle: 'Explore the world around you',
             description: 'Discover each and every one of them.'
         },
-        backgroundColor: colors.green,
+        backgroundColor: colors.blue,
         picture: DiscoverSvg,
         right: true
     },
@@ -43,12 +43,6 @@ const onboardingData = [
         picture: EnjoySvg
     }
 ];
-
-const onboardingBackdropColors = [
-    colors.yellow,
-    colors.blue,
-    colors.yellow
-]
 
 const OnboardingScreen = ({
 
@@ -71,8 +65,6 @@ const OnboardingScreen = ({
 
     const renderItem = ({ item, index }) => (
         <OnboardingSlideHeader
-            label={item.text.label}
-            backgroundColor={item.backgroundColor}
             Picture={item.picture}
             textRight={item.right}
             width={width}
@@ -86,8 +78,8 @@ const OnboardingScreen = ({
     };
 
     const backdropBackground = scrollX.interpolate({
-       inputRange: onboardingBackdropColors.map((_, i) => i * width),
-       outputRange: onboardingBackdropColors.map(bg => bg)
+       inputRange: onboardingData.map((_, i) => i * width),
+       outputRange: onboardingData.map(data => data.backgroundColor)
     });
 
     return (
@@ -118,12 +110,10 @@ const OnboardingScreen = ({
                 onViewableItemsChanged={viewableItemsChanged}
                 ref={slidesRef}
             />
-            <View style={styles.paginatorWrapper}>
-                <Paginator
-                    onboardingData={onboardingData}
-                    scrollX={scrollX}
-                />
-            </View>
+            <Paginator
+                onboardingData={onboardingData}
+                scrollX={scrollX}
+            />
             <Animated.View
                 style={[styles.footerWrapper, { width: width * onboardingData.length,
                     transform: [{ translateX: currentSlideIndex * -width }]}]}

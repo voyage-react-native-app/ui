@@ -26,7 +26,9 @@ navTheme.colors.background = '#FFFFFF';
 
 const App: () => React$Node = () => {
     const checkUser = async () => {
+        await setData('@user', null);
         const user = await getData('@user');
+
         if(user !== null) {
             return user;
         }

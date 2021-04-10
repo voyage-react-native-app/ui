@@ -3,10 +3,9 @@ import { StyleSheet } from 'react-native';
 import { colors } from '../../modules/styles/colors.styles';
 
 export const styles = StyleSheet.create({
-    legalWrapper: {
-        width: '100%'
-    },
+
     legalLinks: {
+        width: '100%',
         color: colors.gray500,
         textAlign: 'center',
         lineHeight: 20,

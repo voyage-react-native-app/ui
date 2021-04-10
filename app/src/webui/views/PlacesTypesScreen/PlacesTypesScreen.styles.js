@@ -5,9 +5,6 @@ export const styles = StyleSheet.create({
         paddingTop: 50,
         marginHorizontal: 30
     },
-    titleContainer: {
-        width: '100%'
-    },
     placeTypesContainer: {
         width: '100%',
         flexDirection: 'row',
@@ -15,12 +12,7 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignContent: 'space-between',
         height: 320,
-        marginTop: 70
-    },
-    submitButtonWrapper: {
-        position: 'absolute',
-        bottom: 40,
-        width: '100%',
-
+        marginTop: 70,
+        marginBottom: 'auto'
     }
 });

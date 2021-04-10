@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, useWindowDimensions, SafeAreaView, StatusBar, Platform } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, useWindowDimensions, SafeAreaView, BackHandler, Alert } from 'react-native';
 
 import BigButton from '../../components/BigButton/BigButton';
 import Title from '../../components/Title/Title';
@@ -21,15 +21,34 @@ const PlacesTypesScreen = ({
         submitSelectedPlaceTypes(selectedPlaceTypeKeys);
     }
 
+    useEffect(() => {
+        const backAction = () => {
+            Alert.alert(null, "Are you sure you want to exit the app?", [
+                {
+                    text: "Cancel",
+                    onPress: () => null,
+                    style: "cancel"
+                },
+                { text: "YES", onPress: () => BackHandler.exitApp() }
+            ]);
+            return true;
+        };
+
+        const backHandler = BackHandler.addEventListener(
+            "hardwareBackPress",
+            backAction
+        );
+
+        return () => backHandler.remove();
+    }, []);
+
     return (
         <SafeAreaView contentContainerStyle={{ flex: 1 }}>
             <View style={[styles.placeTypesScreenContainer,
                 { height: useWindowDimensions().height }, safeAreaViewCheck]}
             >
-                <View style={styles.titleContainer}>
-                    <Title>What kind of places are you interested in exploring?</Title>
-                    <CustomText>Pick your most interesting places</CustomText>
-                </View>
+                <Title>What kind of places are you interested in exploring?</Title>
+                <CustomText style={{marginTop: 10}}>Pick your most interesting places</CustomText>
                 <View style={styles.placeTypesContainer}>
                     {Object.keys(typesOfPlaces).map((placeKey, index) => {
                         const placeTypeName = typesOfPlaces[placeKey];
@@ -40,15 +59,14 @@ const PlacesTypesScreen = ({
                         />
                     })}
                 </View>
-                <View style={styles.submitButtonWrapper}>
-                    <BigButton
-                        backgroundColor={colors.blue}
-                        fontColor={colors.white}
-                        buttonText={'Continue'}
-                        disabled={isSelectedPlacesTypesEmpty}
-                        onPress={setSelectedPlaceTypes}
-                    />
-                </View>
+                <BigButton
+                    backgroundColor={colors.blue}
+                    fontColor={colors.white}
+                    buttonText={'Continue'}
+                    disabled={isSelectedPlacesTypesEmpty}
+                    onPress={setSelectedPlaceTypes}
+                    style={{marginBottom: 40}}
+                />
             </View>
         </SafeAreaView>
     );

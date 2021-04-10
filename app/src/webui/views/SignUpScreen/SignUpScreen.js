@@ -1,7 +1,6 @@
 import React from 'react';
 import { StatusBar, View, useWindowDimensions, SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { useStore } from 'react-redux';
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
@@ -11,6 +10,7 @@ import BigButton from '../../components/BigButton/BigButton';
 import Title from '../../components/Title/Title';
 import CustomText from '../../components/CustomText/CustomText';
 import Legal from '../../components/Legal/Legal';
+import ExistingAccount from '../../components/ExistingAccount/ExistingAccount';
 import { colors } from '../../modules/styles/colors.styles';
 import { styles } from './SignUpScreen.styles';
 import { safeAreaViewCheck } from '../../modules/styles/platform.styles';
@@ -26,11 +26,9 @@ const SignUpScreen = ({
 }) => {
     const navigation = useNavigation();
 
-    const store = useStore();
-
     const goBack = () => {
         navigation.goBack();
-    }
+    };
 
     const dispatchInputUserName = event => {
         event.persist();
@@ -57,7 +55,7 @@ const SignUpScreen = ({
             password: password
         };
         registerUser(data);
-    }
+    };
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
@@ -67,7 +65,7 @@ const SignUpScreen = ({
             />
             <KeyboardAwareScrollView
                 contentContainerStyle={[styles.signUpScreenContainer,
-                    { height: useWindowDimensions().height }, safeAreaViewCheck]}
+                    { height: useWindowDimensions().height }, safeAreaViewCheck] }
                 keyboardShouldPersistTaps="always"
                 showsVerticalScrollIndicator={false}
             >
@@ -77,10 +75,8 @@ const SignUpScreen = ({
                     onPress={goBack}
                     rippleColor={colors.blue300}
                 />
-                <View style={styles.titleContainer}>
-                    <Title>Let's get it started!</Title>
-                    <CustomText>Create an account to better manage your travels</CustomText>
-                </View>
+                <Title>Let's get it started!</Title>
+                <CustomText style={{width: '85%', marginTop: 10, marginBottom: 'auto'}}>Create an account to better manage your travels</CustomText>
                 <View style={styles.formWrapper}>
                     <Input
                         onTextInput={dispatchInputUserName}
@@ -114,22 +110,7 @@ const SignUpScreen = ({
                         buttonText={'Sign Up'}
                         onPress={register}
                     />
-                    <View style={styles.existingAccount}>
-                        <CustomText
-                            textColor={colors.gray500}
-                        >
-                            Already have and account?
-                        </CustomText>
-                        <View style={styles.signInMargin}>
-                            <CustomText
-                                textColor={colors.blue}
-                                fontWeight={'bold'}
-                                onPress={() => console.log('screen')}
-                            >
-                                Sign In
-                            </CustomText>
-                        </View>
-                    </View>
+                    <ExistingAccount/>
                 </View>
             </KeyboardAwareScrollView>
         </SafeAreaView>
